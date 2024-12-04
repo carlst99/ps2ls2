@@ -18,7 +18,7 @@ namespace ps2ls
             if (stream == null)
                 return 0;
 
-            IImage image = Pfim.Pfim.FromStream(stream);
+            IImage image = Pfimage.FromStream(stream);
             IntPtr dataPtr = Marshal.UnsafeAddrOfPinnedArrayElement(image.Data, 0);
 
             int glTextureHandle = GL.GenTexture();
@@ -41,7 +41,7 @@ namespace ps2ls
 
         public static SD.Image DDSStreamToBitmap(Stream stream)
         {
-            IImage image = Pfim.Pfim.FromStream(stream);
+            IImage image = Pfimage.FromStream(stream);
 
             SDI.PixelFormat format;
 
