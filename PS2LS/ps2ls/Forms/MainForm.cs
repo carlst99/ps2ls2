@@ -9,7 +9,6 @@ using System.Windows.Forms;
 using System.IO;
 using ps2ls.Properties;
 using OpenTK;
-using OpenTK.Input;
 using OpenTK.Graphics.OpenGL;
 using ps2ls.Assets;
 

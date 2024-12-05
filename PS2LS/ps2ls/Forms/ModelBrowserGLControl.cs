@@ -9,6 +9,7 @@ using System.Windows.Forms;
 using ps2ls.Cameras;
 using ps2ls.Forms.Controls;
 using OpenTK;
+using OpenTK.Mathematics;
 
 namespace ps2ls.Forms
 {

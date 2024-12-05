@@ -14,6 +14,7 @@ using ps2ls.Cameras;
 using ps2ls.Assets;
 using System.Diagnostics;
 using System.IO;
+using OpenTK.GLControl;
 
 namespace ps2ls.Forms
 {
@@ -67,11 +68,11 @@ namespace ps2ls.Forms
 
         private void glControl1_Resize(object sender, EventArgs e)
         {
-            OpenTK.GLControl glControl = sender as OpenTK.GLControl;
+            GLControl glControl = sender as GLControl;
 
             if (glControl.Height == 0)
             {
-                glControl.ClientSize = new System.Drawing.Size(glControl.ClientSize.Width, 1);
+                glControl.ClientSize = glControl.ClientSize with { Height = 1 };
             }
         }
 

@@ -15,6 +15,8 @@ using ps2ls.Graphics.Materials;
 using System.IO;
 using System.Xml;
 using System.Runtime.InteropServices;
+using OpenTK.GLControl;
+using OpenTK.Mathematics;
 
 namespace ps2ls.Forms
 {
@@ -567,7 +569,7 @@ void main()
 
         private void applicationIdle(object sender, EventArgs e)
         {
-            while (glControl1.Context != null && glControl1.IsIdle)
+            while (glControl1.Context != null)
             {
                 update();
                 render();
@@ -576,7 +578,7 @@ void main()
 
         private void glControl1_Resize(object sender, EventArgs e)
         {
-            OpenTK.GLControl glControl = sender as OpenTK.GLControl;
+            GLControl glControl = sender as GLControl;
 
             if (glControl.Height == 0)
             {

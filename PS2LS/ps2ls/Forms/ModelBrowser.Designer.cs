@@ -259,13 +259,13 @@
             arcBallCamera1.AspectRatio = 0F;
             arcBallCamera1.DesiredDistance = 10F;
             arcBallCamera1.DesiredPitch = 0.7853982F;
-            arcBallCamera1.DesiredTarget = ((OpenTK.Vector3)(resources.GetObject("arcBallCamera1.DesiredTarget")));
+            arcBallCamera1.DesiredTarget = ((OpenTK.Mathematics.Vector3)(resources.GetObject("arcBallCamera1.DesiredTarget")));
             arcBallCamera1.DesiredYaw = -0.7853982F;
             arcBallCamera1.FarPlaneDistance = 65536F;
             arcBallCamera1.FieldOfView = 1.291544F;
             arcBallCamera1.NearPlaneDistance = 0.00390625F;
             arcBallCamera1.Pitch = 0.7853982F;
-            arcBallCamera1.Position = ((OpenTK.Vector3)(resources.GetObject("arcBallCamera1.Position")));
+            arcBallCamera1.Position = ((OpenTK.Mathematics.Vector3)(resources.GetObject("arcBallCamera1.Position")));
             arcBallCamera1.Yaw = -0.7853982F;
             this.glControl1.Camera = arcBallCamera1;
             this.glControl1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -273,7 +273,6 @@
             this.glControl1.Name = "glControl1";
             this.glControl1.Size = new System.Drawing.Size(522, 573);
             this.glControl1.TabIndex = 1;
-            this.glControl1.VSync = false;
             this.glControl1.Paint += new System.Windows.Forms.PaintEventHandler(this.glControl1_Paint);
             this.glControl1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.glControl1_KeyDown);
             this.glControl1.MouseEnter += new System.EventHandler(this.glControl1_MouseEnter);

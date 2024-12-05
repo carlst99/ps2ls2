@@ -7,6 +7,7 @@ using System.Globalization;
 using System.IO;
 using Collada141;
 using System.Text;
+using OpenTK.Mathematics;
 
 namespace ps2ls.IO
 {

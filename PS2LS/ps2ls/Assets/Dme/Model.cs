@@ -5,6 +5,7 @@ using System.Text;
 using System.IO;
 using System.Globalization;
 using OpenTK;
+using OpenTK.Mathematics;
 using ps2ls.Graphics.Materials;
 using ps2ls.Cryptography;
 

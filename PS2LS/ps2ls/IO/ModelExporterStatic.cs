@@ -6,11 +6,13 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
 using Collada141;
+using OpenTK.Mathematics;
 using SharpGLTF;
 using SharpGLTF.Geometry;
 using SharpGLTF.Scenes;
 using SharpGLTF.Materials;
 using SharpGLTF.Geometry.VertexTypes;
+using Half = System.Half;
 
 namespace ps2ls.IO
 {
@@ -546,8 +548,8 @@ namespace ps2ls.IO
                         texCoord.Y = 1.0f - BitConverter.ToSingle(texCoord0Stream.data, baseOffset + 4);
                         break;
                     case VertexLayout.Entry.DataTypes.float16_2:
-                        texCoord.X = Half.FromBytes(texCoord0Stream.data, baseOffset).ToSingle();//index out of range
-                        texCoord.Y = 1.0f - Half.FromBytes(texCoord0Stream.data, baseOffset + 2).ToSingle();
+                        texCoord.X = OpenTK.Mathematics.Half.FromBytes(texCoord0Stream.data, baseOffset).ToSingle();//index out of range
+                        texCoord.Y = 1.0f - OpenTK.Mathematics.Half.FromBytes(texCoord0Stream.data, baseOffset + 2).ToSingle();
                         break;
                     default:
                         texCoord.X = 0;

@@ -8,8 +8,8 @@ using System.IO;
 using System.Windows.Forms;
 using System.ComponentModel;
 using System.Diagnostics;
+using System.IO.Compression;
 using ps2ls.IO;
-using Ionic.Zlib;
 
 namespace ps2ls.Assets
 {
@@ -111,7 +111,7 @@ namespace ps2ls.Assets
         public static byte[] Decompress(int expectedLength, byte[] data)
         {
             using (var memStream = new MemoryStream(data))
-            using (var zLibStream = new ZlibStream(memStream, CompressionMode.Decompress))
+            using (var zLibStream = new ZLibStream(memStream, CompressionMode.Decompress))
             using (var outStream = new MemoryStream(expectedLength))
             {
                 zLibStream.CopyTo(outStream);

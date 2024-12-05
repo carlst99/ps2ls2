@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.IO;
 using OpenTK;
+using OpenTK.Mathematics;
 
 namespace ps2ls.Assets
 {
