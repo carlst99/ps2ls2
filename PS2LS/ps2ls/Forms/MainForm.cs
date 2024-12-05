@@ -45,7 +45,7 @@ namespace ps2ls.Forms
 
         private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            AboutBox.Instance.ShowDialog();
+            AboutForm.Instance.ShowDialog();
         }
 
         private void Form1_Load(object sender, EventArgs e)

@@ -9,14 +9,14 @@ using System.Windows.Forms;
 
 namespace ps2ls
 {
-    partial class AboutBox : Form
+    partial class AboutForm : Form
     {
         #region Singleton
-        private static AboutBox instance = null;
+        private static AboutForm instance = null;
 
         public static void CreateInstance()
         {
-            instance = new AboutBox();
+            instance = new AboutForm();
         }
 
         public static void DeleteInstance()
@@ -24,10 +24,10 @@ namespace ps2ls
             instance = null;
         }
 
-        public static AboutBox Instance { get { return instance; } }
+        public static AboutForm Instance { get { return instance; } }
         #endregion
 
-        public AboutBox()
+        public AboutForm()
         {
             InitializeComponent();
             labelVersion.Text = "Version " + Assembly.GetEntryAssembly().GetName().Version.ToString();

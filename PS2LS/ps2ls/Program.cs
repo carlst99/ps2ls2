@@ -39,7 +39,7 @@ namespace ps2ls
 
             AssetManager.CreateInstance();
 
-            AboutBox.CreateInstance();
+            AboutForm.CreateInstance();
             MainForm.CreateInstance();
             
 

@@ -1,22 +1,10 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
-    <ProductVersion>8.0.30703</ProductVersion>
-    <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{EA8DD307-8B70-4B76-A3E4-140D2A5ECB89}</ProjectGuid>
+    <TargetFramework>net48</TargetFramework>
+    <PlatformTarget>x86</PlatformTarget>
     <OutputType>WinExe</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>ps2ls</RootNamespace>
-    <AssemblyName>ps2ls2</AssemblyName>
-    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
-    <TargetFrameworkProfile>
-    </TargetFrameworkProfile>
-    <FileAlignment>512</FileAlignment>
-    <IsWebBootstrapper>false</IsWebBootstrapper>
-    <PublishUrl>publish\</PublishUrl>
-    <Install>true</Install>
+    <!--<Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
     <UpdateEnabled>false</UpdateEnabled>
     <UpdateMode>Foreground</UpdateMode>
@@ -28,306 +16,56 @@
     <ApplicationRevision>0</ApplicationRevision>
     <ApplicationVersion>2.0.0.0</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
-    <BootstrapperEnabled>true</BootstrapperEnabled>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <OutputPath>bin\Release\</OutputPath>
-    <Optimize>true</Optimize>
-    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
-    <Prefer32bit>false</Prefer32bit>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <OutputPath>bin\Debug\</OutputPath>
-    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
-    <CheckForOverflowUnderflow>false</CheckForOverflowUnderflow>
-    <Prefer32bit>false</Prefer32bit>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
-    <OutputPath>bin\x86\Debug\</OutputPath>
-    <PlatformTarget>x86</PlatformTarget>
-    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
-    <OutputPath>bin\x86\Release\</OutputPath>
-    <PlatformTarget>x86</PlatformTarget>
-    <Optimize>true</Optimize>
+    <ImportWindowsDesktopTargets>true</ImportWindowsDesktopTargets>
+    <BootstrapperEnabled>true</BootstrapperEnabled>-->
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <UseWindowsForms>true</UseWindowsForms>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup>
     <ApplicationIcon>ps2ls.ico</ApplicationIcon>
   </PropertyGroup>
-  <PropertyGroup>
-    <StartupObject />
-  </PropertyGroup>
-  <PropertyGroup>
-    <RunPostBuildEvent>Always</RunPostBuildEvent>
-  </PropertyGroup>
   <ItemGroup>
-    <Reference Include="mscorlib" />
-    <Reference Include="System" />
-    <Reference Include="System.ComponentModel.Composition" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.DirectoryServices" />
-    <Reference Include="System.IO.Compression.FileSystem" />
-    <Reference Include="System.Numerics" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Deployment" />
-    <Reference Include="System.Drawing" />
-    <Reference Include="System.Windows.Forms" />
-    <Reference Include="System.Xml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Assets\Adr\ActorDefinition.cs" />
-    <Compile Include="Assets\Dma\Material.cs" />
-    <Compile Include="Assets\Dme\BoneDrawCall.cs" />
-    <Compile Include="Assets\Mrn\Mrn.cs" />
-    <Compile Include="Assets\Pack\NamelistGenerator.cs" />
-    <Compile Include="FMOD\fmod.cs" />
-    <Compile Include="FMOD\fmod_dsp.cs" />
-    <Compile Include="FMOD\fmod_errors.cs" />
-    <Compile Include="Forms\ActorBrowser.cs">
+    <Compile Update="Forms\ActorBrowser.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Forms\ActorBrowser.Designer.cs">
-      <DependentUpon>ActorBrowser.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\ImageBrowser.cs">
+    <Compile Update="Forms\ImageBrowser.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Forms\ImageBrowser.Designer.cs">
-      <DependentUpon>ImageBrowser.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\ImageExportForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\ImageExportForm.Designer.cs">
-      <DependentUpon>ImageExportForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\SoundBrowser.cs">
+    <Compile Update="Forms\SoundBrowser.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Forms\SoundBrowser.Designer.cs">
-      <DependentUpon>SoundBrowser.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\SoundExportForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\SoundExportForm.Designer.cs">
-      <DependentUpon>SoundExportForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Graphics\Materials\ParameterGroup.cs" />
-    <Compile Include="IO\ColladaBuilderStatic.cs" />
-    <Compile Include="IO\collada_schema_1_4.cs" />
-    <Compile Include="IO\ModelExporterStatic.cs" />
-    <Compile Include="Assets\Pack\AssetManager.cs" />
-    <Compile Include="Forms\Controls\CustomListBox.cs">
+    <Compile Update="Forms\Controls\CustomListBox.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Cryptography\Jenkins.cs" />
-    <Compile Include="Assets\Dma\Dma.cs" />
-    <Compile Include="Graphics\Materials\DrawStyle.cs" />
-    <Compile Include="Graphics\Materials\MaterialDefinitionManager.cs" />
-    <Compile Include="Graphics\Materials\VertexLayout.cs" />
-    <Compile Include="Forms\AboutForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\AboutForm.Designer.cs">
-      <DependentUpon>AboutForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Graphics\Materials\MaterialDefinition.cs" />
-    <Compile Include="IO\BinaryReaderBigEndian.cs" />
-    <Compile Include="Forms\Controls\GLModelVeiwerControl.cs">
+    <Compile Update="Forms\Controls\GLModelVeiwerControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Cameras\ArcBallCamera.cs" />
-    <Compile Include="Cameras\Camera.cs" />
-    <Compile Include="Assets\Dme\Mesh.cs" />
-    <Compile Include="Assets\Dme\Model.cs" />
-    <Compile Include="Assets\Dme\Vertex.cs" />
-    <Compile Include="Forms\MaterialBrowser.cs">
+    <Compile Update="Forms\MaterialBrowser.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Forms\MaterialBrowser.Designer.cs">
-      <DependentUpon>MaterialBrowser.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\MainForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\MainForm.Designer.cs">
-      <DependentUpon>MainForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\GenericLoadingForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\GenericLoadingForm.Designer.cs">
-      <DependentUpon>GenericLoadingForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\ModelBrowser.cs">
+    <Compile Update="Forms\ModelBrowser.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Forms\ModelBrowser.Designer.cs">
-      <DependentUpon>ModelBrowser.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\ModelBrowserGLControl.cs">
+    <Compile Update="Forms\ModelBrowserGLControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Forms\ModelBrowserGLControl.Designer.cs">
-      <DependentUpon>ModelBrowserGLControl.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\ModelBrowserModelStats.cs">
+    <Compile Update="Forms\ModelBrowserModelStats.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Forms\ModelBrowserModelStats.Designer.cs">
-      <DependentUpon>ModelBrowserModelStats.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\ModelExportForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\ModelExportForm.Designer.cs">
-      <DependentUpon>ModelExportForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Assets\Pack\Pack.cs" />
-    <Compile Include="Assets\Pack\Asset.cs" />
-    <Compile Include="Forms\AssetBrowser.cs">
+    <Compile Update="Forms\AssetBrowser.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Forms\AssetBrowser.Designer.cs">
-      <DependentUpon>AssetBrowser.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\MaterialBrowserGLControl.cs">
+    <Compile Update="Forms\MaterialBrowserGLControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="IO\SoundExporterStatic.cs" />
-    <Compile Include="IO\TextureExporterStatic.cs" />
-    <Compile Include="Program.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
+    <Compile Update="Properties\Resources.Designer.cs">
       <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="TextureManager.cs" />
-    <Compile Include="Utils.cs" />
-    <EmbeddedResource Include="Forms\ActorBrowser.resx">
-      <DependentUpon>ActorBrowser.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Controls\CustomListBox.resx">
-      <DependentUpon>CustomListBox.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\AboutForm.resx">
-      <DependentUpon>AboutForm.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\ImageBrowser.resx">
-      <DependentUpon>ImageBrowser.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\MaterialBrowser.resx">
-      <DependentUpon>MaterialBrowser.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\MainForm.resx">
-      <DependentUpon>MainForm.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\GenericLoadingForm.resx">
-      <DependentUpon>GenericLoadingForm.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\ModelBrowser.resx">
-      <DependentUpon>ModelBrowser.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\ModelBrowserGLControl.resx">
-      <DependentUpon>ModelBrowserGLControl.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\ModelBrowserModelStats.resx">
-      <DependentUpon>ModelBrowserModelStats.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\ImageExportForm.resx">
-      <DependentUpon>ImageExportForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\ModelExportForm.resx">
-      <DependentUpon>ModelExportForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\AssetBrowser.resx">
-      <DependentUpon>AssetBrowser.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\SoundBrowser.resx">
-      <DependentUpon>SoundBrowser.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\SoundExportForm.resx">
-      <DependentUpon>SoundExportForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Properties\Resources.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <SubType>Designer</SubType>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <None Include="app.config" />
-    <None Include="Shaders\blur_horizontal.frag" />
-    <None Include="Shaders\blur_vertical.frag" />
-    <None Include="Shaders\default.frag" />
-    <None Include="Shaders\default.vert" />
-    <None Include="Shaders\depth.frag" />
-    <None Include="Shaders\depth.vert" />
-    <None Include="Shaders\diffuse.frag" />
-    <None Include="Shaders\diffuse.vert" />
-    <None Include="Shaders\null.frag" />
-    <None Include="Shaders\null.vert" />
-    <None Include="Properties\Settings.settings">
-      <Generator>SettingsSingleFileGenerator</Generator>
-      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
-    </None>
-    <Compile Include="Properties\Settings.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Settings.settings</DependentUpon>
-      <DesignTimeSharedInput>True</DesignTimeSharedInput>
-    </Compile>
   </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\box-zipper.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\magnifier.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\direction.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\ui-text-field-clear-button.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\box-document.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\document.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\door-open.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\folder-import.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\document-import.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\document-export.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\ps2ls.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\question.png" />
-  </ItemGroup>
-  <ItemGroup>
+  <!--<ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.5">
       <Visible>False</Visible>
       <ProductName>Microsoft .NET Framework 4.5 %28x86 and x64%29</ProductName>
@@ -343,87 +81,17 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\document-search-result.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\box-search-result.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\box--plus.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\box.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\box--arrow.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\box-small.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\counter.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\box--minus.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\box-arrow-drive.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\document-arrow-drive.png" />
-  </ItemGroup>
+  </ItemGroup>-->
   <ItemGroup>
     <Content Include="FMOD\fmod.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="FMOD\fmodL.dll" />
     <Content Include="ps2ls.ico" />
-    <None Include="Resources\bones.png" />
-    <None Include="Resources\DocumentWrite.png" />
-    <None Include="Resources\BastionAtDawn.png" />
-    <None Include="Resources\Image-scaled.png" />
-    <None Include="Resources\FMOD Logo Black - White Background.png" />
-    <None Include="Resources\sphere-wire-occluder.png" />
-    <None Include="Resources\document-plus.png" />
-    <None Include="Resources\arrow-right.png" />
-    <None Include="Resources\arrow-left.png" />
-    <None Include="Resources\materials_3.xml" />
-    <None Include="Resources\robot.png" />
-    <None Include="Resources\robotic-arm.png" />
-    <None Include="Resources\sphere-aabb2.png" />
-    <None Include="Resources\sphere-aabb1.png" />
-    <None Include="Resources\sphere-aabb.png" />
-    <None Include="Resources\cube-medium-12.png" />
-    <None Include="Resources\cube-medium.png" />
-    <None Include="Resources\cube.png" />
-    <None Include="Resources\axes.png" />
-    <None Include="Resources\textured1.png" />
-    <None Include="Resources\textured.png" />
-    <None Include="Resources\smooth.png" />
-    <None Include="Resources\wireframe.png" />
-    <None Include="Resources\drive-download.png" />
-    <None Include="Resources\bug--plus.png" />
-    <None Include="Resources\folder-small-horizontal.png" />
-    <None Include="Resources\bug.png" />
-    <None Include="Resources\folder-horizontal-open.png" />
-    <None Include="Resources\chain-small.png" />
-    <None Include="Resources\chain.png" />
-    <None Include="Resources\tree-magnifier.png" />
-    <None Include="Resources\terminal.gif" />
-    <None Include="Resources\tree-small.png" />
-    <None Include="Resources\music.png" />
-    <None Include="Resources\document-xaml.png" />
-    <None Include="Resources\document-tex.png" />
-    <None Include="Resources\document-text.png" />
-    <None Include="Resources\image.png" />
-    <None Include="Resources\tree.png" />
-    <None Include="Resources\grid.png" />
-    <None Include="Resources\gear.png" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.Bcl.AsyncInterfaces" Version="9.0.0" />
+    <PackageReference Include="Microsoft.CSharp" Version="4.7.0" />
     <PackageReference Include="OpenTK" Version="3.3.3" />
     <PackageReference Include="OpenTK.GLControl" Version="3.3.3" />
     <PackageReference Include="Pfim" Version="0.11.3" />
@@ -431,6 +99,9 @@
     <PackageReference Include="SharpGLTF.Runtime" Version="1.0.3" />
     <PackageReference Include="SharpGLTF.Toolkit" Version="1.0.3" />
     <PackageReference Include="System.Buffers" Version="4.6.0" />
+    <PackageReference Include="System.ComponentModel.Composition" Version="9.0.0" />
+    <PackageReference Include="System.Data.DataSetExtensions" Version="4.5.0" />
+    <PackageReference Include="System.DirectoryServices" Version="9.0.0" />
     <PackageReference Include="System.IO.Pipelines" Version="9.0.0" />
     <PackageReference Include="System.Memory" Version="4.6.0" />
     <PackageReference Include="System.Numerics.Vectors" Version="4.6.0" />
@@ -441,16 +112,16 @@
     <PackageReference Include="System.ValueTuple" Version="4.5.0" />
     <PackageReference Include="Zlib.Portable" Version="1.11.0" />
   </ItemGroup>
-  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <PropertyGroup>
-    <PostBuildEvent>
-    </PostBuildEvent>
-  </PropertyGroup>
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
-       Other similar extension points exist, see Microsoft.Common.targets.
-  <Target Name="BeforeBuild">
-  </Target>
-  <Target Name="AfterBuild">
-  </Target>
-  -->
+  <ItemGroup>
+    <Compile Remove="Forms\TextureBrowser.cs" />
+    <Compile Remove="Forms\TextureBrowser.Designer.cs" />
+    <Compile Remove="Forms\TextureBrowserGLControl.cs" />
+    <EmbeddedResource Remove="Forms\TextureBrowser.resx" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Update="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
 </Project>
