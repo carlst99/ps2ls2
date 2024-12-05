@@ -1,34 +1,31 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
+  <!-- Compilation Properties -->
   <PropertyGroup>
     <TargetFramework>net48</TargetFramework>
     <PlatformTarget>x86</PlatformTarget>
     <OutputType>WinExe</OutputType>
     <RootNamespace>ps2ls</RootNamespace>
-    <!--<Install>true</Install>
-    <InstallFrom>Disk</InstallFrom>
-    <UpdateEnabled>false</UpdateEnabled>
-    <UpdateMode>Foreground</UpdateMode>
-    <UpdateInterval>7</UpdateInterval>
-    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
-    <UpdatePeriodically>false</UpdatePeriodically>
-    <UpdateRequired>false</UpdateRequired>
-    <MapFileExtensions>true</MapFileExtensions>
-    <ApplicationRevision>0</ApplicationRevision>
-    <ApplicationVersion>2.0.0.0</ApplicationVersion>
-    <UseApplicationTrust>false</UseApplicationTrust>
-    <ImportWindowsDesktopTargets>true</ImportWindowsDesktopTargets>
-    <BootstrapperEnabled>true</BootstrapperEnabled>-->
     <!-- The below allows non-string resources to be supported -->
     <GenerateResourceUsePreserializedResources>true</GenerateResourceUsePreserializedResources>
     <!-- The below changes the namespace under which resource designer files are generated. We need this as folder-convention namespacing is not used -->
     <EmbeddedResourceUseDependentUponConvention>true</EmbeddedResourceUseDependentUponConvention>
-    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     <UseWindowsForms>true</UseWindowsForms>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
+  
+  <!-- Assembly properties -->
   <PropertyGroup>
+    <Title>ps2ls2</Title>
+    <Description>
+      ps2ls2 is a small program that allows you to browse and extract Planetside 2 pack2 files and model files.
+    </Description>
+    <Company>NatCracken</Company>
+    <Product>ps2ls2</Product>
+    <Copyright>ps2ls 2012-2013 Colin Basnett, Roy Awesome. ps2ls2 2020-2023 Various Contributors</Copyright>
     <ApplicationIcon>ps2ls.ico</ApplicationIcon>
+    <Version>2.0.3</Version>
   </PropertyGroup>
+
   <ItemGroup>
     <Compile Update="Forms\ActorBrowser.cs">
       <SubType>UserControl</SubType>
