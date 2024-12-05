@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Buffers;
+using System.Buffers.Binary;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -77,7 +79,7 @@ namespace ps2ls.Assets
             }
             catch (Exception e)
             {
-                MessageBox.Show(e.Message, "Error", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
+                MessageBox.Show(e.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                 return null;
             }
@@ -106,28 +108,40 @@ namespace ps2ls.Assets
             return pack;
         }
 
-        public static byte[] Decompress(byte[] data)
+        public static byte[] Decompress(int expectedLength, byte[] data)
         {
             using (var memStream = new MemoryStream(data))
             using (var zLibStream = new ZlibStream(memStream, CompressionMode.Decompress))
-            using (var outStream = new MemoryStream())
+            using (var outStream = new MemoryStream(expectedLength))
             {
                 zLibStream.CopyTo(outStream);
                 return outStream.ToArray();
             }
         }
 
-        byte[] pngHeader = new byte[] { 0x89, 0x50, 0x4E, 0x47, 0x0D, 0x0A, 0x1A, 0x0A };
-        byte[] jpgHeader = new byte[] { 0xFF, 0xD8, 0xFF, 0xE1, 0x11, 0xBF, 0x45, 0x78 };
-        public byte[] CreateBufferFromAsset(FileStream fileStream, Asset asset)
+        public static byte[] CreateBufferFromAsset(FileStream packFileStream, Asset asset)
         {
-            byte[] buffer = new byte[(int)asset.DataLength];
+            int expectedLength = (int)asset.DataLength;
+            byte[] buffer = new byte[expectedLength];
 
-            long offset = Convert.ToInt64(asset.Offset) + (asset.isZipped ? 8 : 0);//zipped assets need another offset of 8 bytes
-            fileStream.Seek(offset, SeekOrigin.Begin);
-            fileStream.Read(buffer, 0, (int)asset.DataLength);
+            long offset = Convert.ToInt64(asset.Offset);
 
-            if (asset.isZipped) buffer = Decompress(buffer);
+            // Zipped assets have an eight-byte prefix containing 4 bytes of magic data and then the length of the
+            // unzipped data
+            if (asset.isZipped)
+            {
+                offset += 4;
+                byte[] unzippedLenBytes = ArrayPool<byte>.Shared.Rent(sizeof(uint));
+                offset += packFileStream.Read(unzippedLenBytes, 0, sizeof(uint));
+                expectedLength = (int)BinaryPrimitives.ReadUInt32LittleEndian(unzippedLenBytes);
+                ArrayPool<byte>.Shared.Return(unzippedLenBytes);
+            }
+
+            packFileStream.Seek(offset, SeekOrigin.Begin);
+            packFileStream.Read(buffer, 0, (int)asset.DataLength);
+
+            if (asset.isZipped)
+                buffer = Decompress(expectedLength, buffer);
 
             return buffer;
         }
@@ -142,7 +156,7 @@ namespace ps2ls.Assets
             }
             catch (Exception e)
             {
-                System.Windows.Forms.MessageBox.Show(e.Message, "Error", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
+                MessageBox.Show(e.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                 return false;
             }
@@ -171,7 +185,7 @@ namespace ps2ls.Assets
             }
             catch (Exception e)
             {
-                System.Windows.Forms.MessageBox.Show(e.Message, "Error", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
+                MessageBox.Show(e.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                 return false;
             }
@@ -208,7 +222,7 @@ namespace ps2ls.Assets
             }
             catch (Exception e)
             {
-                System.Windows.Forms.MessageBox.Show(e.Message, "Error", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
+                MessageBox.Show(e.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                 return false;
             }
@@ -246,20 +260,20 @@ namespace ps2ls.Assets
 
             //ExtractAssetByNameToDirectory(name, "E:\\Out"); //rip asset without showing it, for debugging assets in the alternate dmod format
 
-            FileStream fileStream = null;
+            byte[] buffer;
 
             try
             {
-                fileStream = File.Open(asset.Pack.Path, FileMode.Open, FileAccess.Read, FileShare.Read);
+                using (FileStream fileStream = File.Open(asset.Pack.Path, FileMode.Open, FileAccess.Read, FileShare.Read))
+                {
+                    buffer = CreateBufferFromAsset(fileStream, asset);
+                }
             }
-            catch (Exception e)
+            catch (Exception ex)
             {
-                System.Windows.Forms.MessageBox.Show(e.Message, "Error", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
-
+                MessageBox.Show(ex.Message, "Error while extracting asset", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return null;
             }
-
-            byte[] buffer = CreateBufferFromAsset(fileStream, asset);
 
             return new MemoryStream(buffer);
         }
