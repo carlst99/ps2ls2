@@ -569,11 +569,11 @@ void main()
 
         private void applicationIdle(object sender, EventArgs e)
         {
-            while (glControl1.Context != null)
-            {
-                update();
-                render();
-            }
+            update();
+            render();
+            // while (glControl1.Context != null)
+            // {
+            // }
         }
 
         private void glControl1_Resize(object sender, EventArgs e)
